@@ -1,0 +1,32 @@
+events {
+    worker_connections 1024;
+}
+
+http {
+   
+    server{
+        listen 80;
+	server_name web1.iglesio.com.br;
+
+	location / {
+		proxy_pass http://website01;
+        }
+    }
+    server{
+        listen 80;
+        server_name web2.iglesio.com.br;
+
+        location / {
+                proxy_pass http://website02;
+        }
+    }
+     server{
+        listen 80;
+        server_name web3.iglesio.com.br;
+
+        location / {
+                proxy_pass http://website03;
+        }
+    }
+
+}
